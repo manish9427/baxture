@@ -39,7 +39,7 @@ const validateObjectId = (req, res, next) => {
 
 // Routes for CRUD operations
 
-app.get("/api/users", async (req, res) => {
+app.get("/users", async (req, res) => {
   try {
     const users = await User.find();
     res.status(200).json({ users });
@@ -49,7 +49,7 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-app.get("/api/users/:userId", validateObjectId, async (req, res) => {
+app.get("/users/:userId", validateObjectId, async (req, res) => {
   try {
     const userId = req.params.userId;
     const user = await User.findById(userId);
@@ -65,7 +65,7 @@ app.get("/api/users/:userId", validateObjectId, async (req, res) => {
   }
 });
 
-app.post("/api/users", async (req, res) => {
+app.post("/users", async (req, res) => {
   try {
     const { username, age, hobbies } = req.body;
     const newUser = new User({ username, age, hobbies });
@@ -77,7 +77,7 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
-app.put("/api/users/:userId", validateObjectId, async (req, res) => {
+app.put("/users/:userId", validateObjectId, async (req, res) => {
   try {
     const userId = req.params.userId;
     const { username, age, hobbies } = req.body;
@@ -98,7 +98,7 @@ app.put("/api/users/:userId", validateObjectId, async (req, res) => {
   }
 });
 
-app.delete("/api/users/:userId", validateObjectId, async (req, res) => {
+app.delete("/users/:userId", validateObjectId, async (req, res) => {
   try {
     const userId = req.params.userId;
     const deletedUser = await User.findByIdAndDelete(userId);
