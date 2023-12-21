@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
@@ -19,14 +19,14 @@ db.once("open", () => {
 
 app.use(express.json());
 
-// Define Mongoose schema and model for users
+// Mongoose schema and model for users
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
   age: { type: Number, required: true },
   hobbies: { type: [String], default: [] },
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Baxture", userSchema);
 
 // Middleware to validate MongoDB ObjectId
 const validateObjectId = (req, res, next) => {
